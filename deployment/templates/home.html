@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment Analysis with SELU CNN</title>
+</head>
+<body>
+    <h2>Try it yourself</h2>
+    <p>Input a text for the model to predict its sentiment:</p>
+    <form action = "http://localhost:8080" method="post">
+      <textarea name="user_text" rows="5" cols="80">This movie was great.</textarea>
+      <br>
+      <input type="submit" name="predict_button" value="Predict Sentiment">
+    </form>
+
+    <h2>Browse results</h2>
+    <p>The following table shows the results of 10 random reviews taken from the test set (previously unseen by the model):</p>
+    <form action = "http://localhost:8080" method="post">
+        <input type="submit" name="reviews_button" value="Show more reviews">
+    </form>
+    <table id="test-table" class="table display" cellspacing="1" border="1" width="100%">
+        <thead>
+            <td>Review Text</td>
+            <td>True Sentiment</td>
+            <td>Prediction</td>
+        </thead>
+        <tbody>
+            {% for k, v in table_data.items() %}
+                <tr>
+                    <td> <textarea name="" id="" cols="80" rows="5">{{ v.Review }}</textarea>  </td>
+                    <td> {{ v.Truth }} </td>
+                    {% if v.Correct %}
+                        <td bgcolor="#90ff00"> {{ v.Prediction }} </td>
+                    {% else %}
+                        <td bgcolor="red"> {{  v.Prediction }} </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+</body>
+</html>

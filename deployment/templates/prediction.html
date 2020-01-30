@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<header>
+    <title>User Input Prediction
+    </title>
+    <ul>
+        <li><a href="/">Go Back</a></li>
+    </ul>
+</header>
+
+<body>
+    <div class="container">
+        {% block content %}
+        <h3>Text Input</h3>
+        <div class="flash">{{ review }}</div>
+        <h3>Predicted sentiment</h3>
+        <div class="flash">{{ input }}</div>
+        {% endblock %}
+    </div>
+</body>
+
+</html>
